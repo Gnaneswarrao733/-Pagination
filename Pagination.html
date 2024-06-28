@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(182, 73, 73);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagination {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            color: #383838;
+            padding: 10px 40px;
+            border-radius: 10px;
+        }
+        ul {
+            margin: 20px 30px;
+        }
+        ul li {
+            display: inline-block;
+            margin: 0 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 45px;
+            cursor: pointer;
+        }
+        ul li.active {
+            color: #fff;
+            background-color: #ff4568;
+
+        }
+        .btn1 {
+            align-items: center;
+            font-size: 22px;
+            font-weight: 500;
+            background-color: rgb(131, 11, 230);
+            color: #f8f3f3;
+            padding: 10px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .btn2 {
+            align-items: center;
+            font-size: 22px;
+            font-weight: 500;
+            background-color: green;
+            color: #f8f3f3;
+            padding: 10px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pagination">
+            <button class="btn1" onclick="backbtn()">prev</button>
+            <ul>
+                <li class="link active" value="1">1</li>
+                <li class="link" value="2" onclick="activeLink()">2</li>
+                <li class="link" value="3" onclick="activeLink()">3</li>
+                <li class="link" value="4" onclick="activeLink()">4</li>
+                <li class="link" value="5" onclick="activeLink()">5</li>
+                <li class="link" value="6" onclick="activeLink()">6</li>
+                <li class="link" value="7" onclick="activeLink()">7</li>
+                <li class="link" value="8" onclick="activeLink()">8</li>
+                <li class="link" value="9" onclick="activeLink()">9</li>
+                <li class="link" value="10" onclick="activeLink()">10</li>
+            </ul>
+            <button class="btn2" onclick="nextbtn()">next</button>
+        </div>
+    </div>
+</body>
+<script>
+    let link = document.getElementsByClassName("link");
+    let currentValue = 1;
+
+    function activeLink(){
+        for(l of  link){
+            l.classList.remove("active");
+        }
+        event.target.classList.add("active")
+        currentValue = event.target.value;
+    }
+    function backbtn(){
+        if(currentValue > 1){
+            for(l of  link){
+                l.classList.remove("active");
+            }
+            currentValue--;
+            link[currentValue-1].classList.add("active");    
+        }
+    }
+    function nextbtn(){
+        if(currentValue < 10){
+            for(l of  link){
+                l.classList.remove("active");
+            }
+            currentValue++;
+            link[currentValue-1].classList.add("active");    
+        }
+    }
+</script>
+</html>
